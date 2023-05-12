@@ -1,0 +1,12 @@
+# JENKINS
+ * jenkins is an open-source automation server that helps to automate parts of the software development process. 
+ * It helps to automate the building, testing, and deployment of software applications. Jenkins provides hundreds of plugins to support building, deploying, and automating any project.
+ * It is a popular tool for continuous integration and continuous delivery (CI/CD) pipelines.
+
+
+
+
+
+* JSON (JavaScript Object Notation) is a lightweight, text-based, and language-independent data interchange format that is easy for humans to read and write and for machines to parse and generate. It is primarily used for transmitting data between a server and a web application, as an alternative to XML.
+
+In JSON, data is represented in key-value pairs and organized into a nested tree structure, making it easy to represent complex data structures such as arrays and objects. Here is an example of a JSON object:
