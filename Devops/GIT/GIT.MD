@@ -34,5 +34,7 @@ Note: Different between GIT and GITHUB
 - git commit -m "`<description>`"
 - git push -u origin `<current-local-branch>`
 - always run git status to check current status of your git repo
+- git branch: This is used to create a new branch (git branch [new-branch-name)
+- -git branch -d {branch-name} -- Delete branch
 - git checkout -b `<new-branch-name>` `<current-branch-you-are-checking-off-from>`: create new branch off another updated branch
 - git checkout "branch-name"(SWITCH INTO A BRANCH)
