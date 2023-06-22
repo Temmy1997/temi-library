@@ -4,7 +4,7 @@ Bound to a specific AZ (Availabilty zone)
 
 # ELACTIC  BLOCK VOLUME (EBS) 
 * This is netwpork bdrive that can attached to an instance. 
-* User can still getdata even after an instance is terminated. 
+* User can still get data even after an instance is terminated. 
 * EBS Volume cannot be atta hed to two EC2 instances at a time. 
 * They are bound to a specific AZ. 
   - EBS volume in attached to US-EAST1 cannot be attahed to US-EAST2
@@ -74,5 +74,19 @@ When an EBS is enabled to be deleted on termination, it means what when the inst
 2. Availability and Durability
 * EFS Standard Multi-AZ: EFS will be located in multiple AZ. Great for Production environment (If one AZ is not available, it will not affect the EFS) 
 * One Zone:  EFS eill be locatd in just one AZ. Great for dev environment, but will nedd backup enabled by default.  
-             
-        
+## EBS vs EFS 
+* EBS VOLUMES 
+1. EBS volumes is atytached to one insatnnce at a time 
+2. Except multi attach (io1,io2)(ATTACH same instance in multiple instance in the same AZ)
+3. EBS volumes are locked at the AZ Level 
+4. gp2: IO will increase if the disk increase 
+5. io1: can increase IO independently. 
+6. We need to take a snapshot to migrate EBS volume accross AZ 
+7. Root EBS volume ofinstance will get terminated by default when the EC2 instance is terminated. 
+
+* EFS volumes
+1. Only for linux instances 
+2. Can be mounter on 100 instance across all AZ 
+3. EFS is more expensive than EBS 
+4. Can leverage EFS-IA for cost savings 
+5. 
