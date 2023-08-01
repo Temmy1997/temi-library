@@ -67,3 +67,40 @@
 * Helps to make your application stateless. 
 * Since it's managed by AWS, it take care of the OS maintencae, patching, configurstion, monitoring, failure recovery abd backup.
 * Amazon elastic cache require you to do heavy application code changes 
+
+## Architecture for using Elactiv Cache 
+ * Application will query elastic cache (Cache hit )
+ * if its not available, it will get from the RDS abd store Elastic CAHCE (Cache miss)
+ * Storing data in the cache will help to reduce load from the RDS datbase 
+
+
+REIDIS 
+* Multi-AZ WITH Auto-failover 
+* Read replicas to scale reads, Have high avalability  
+* Has a data durability 
+* Support sets and sorted sets
+* Has backup and restore 
+* 
+  
+MEMCACHED
+* no high avalability 
+* No backup and restore 
+* Non persistent
+* Uses MULTI-NODE for partitioning (SHARDING) 
+
+## Elastic cache security 
+* Elastic cache uses IAM authentication for Redis 
+* IAM policies are only usd fro AWS API -Level security 
+* REDUS AUTHENTICATION
+  * Password or token can be created for Redis Cluster 
+  * Its an extra level of security for the cahce after the secirty group
+  * Suppprt SSL flight encryption
+* Memcached 
+  * Supports SASL -based authentication (advanced_)
+
+## Parrern for ELASTIC cache 
+* Lazy Loading: Read data is cached 
+* Write Through: Add or update data in the cache when written in DB
+* Session store: STORE temporary session date is cache 
+* 
+* 
