@@ -1,0 +1,25 @@
+---
+- name: Install Apache on Amazon Linux
+  hosts: all
+  remote_user: ec2-user
+  become: yes
+  tasks:
+  
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: latest
+
+    - name: Start Apache
+      ansible.builtin.service:
+        name: httpd
+        state: started
+
+    - name: Ensure Apache service is enabled and running
+      systemd:
+        name: httpd
+        enabled: yes
+        state: started
+
+    - 
+
