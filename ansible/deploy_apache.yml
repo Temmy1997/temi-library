@@ -25,7 +25,7 @@
 
     - name: Copy website files
       copy:
-        src: /root/ansible/index.html
+        src: /var/lib/jenkins/workspace/temi-library/ansible/index.html
         dest: /var/www/html/index.html
 
     - name: Restart Apache
