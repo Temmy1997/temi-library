@@ -1,6 +1,6 @@
 ---
 - name: Install Apache on Amazon Linux
-  hosts: aws_ec2
+  hosts: all
   remote_user: ec2-user
   become: yes
   vars:
