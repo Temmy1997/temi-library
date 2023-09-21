@@ -43,7 +43,7 @@
         name: apache2
         enabled: yes
         state: started
-      when: when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu"
     
     - name: Copy website files
       copy:
