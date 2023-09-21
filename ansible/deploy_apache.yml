@@ -1,5 +1,5 @@
 ---
-- name: Install Apache on Amazon Linux
+- name: Install and Configure Apache
   hosts: all
   remote_user: ec2-user
   become: yes
@@ -8,27 +8,28 @@
   tasks:
 
     - name: Install Apache
-      yum:
-        name: httpd
-        state: latest
+      package:
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+        state: present
 
     - name: Start Apache
       ansible.builtin.service:
-        name: httpd
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
         state: started
 
     - name: Ensure Apache service is enabled and running
       systemd:
-        name: httpd
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
         enabled: yes
         state: started
 
     - name: Copy website files
       copy:
         src: index.html
-        dest: /var/www/html/index.html
+        dest: "/var/www/html/index.html"
 
     - name: Restart Apache
       ansible.builtin.service:
-        name: httpd
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
         state: restarted
+
