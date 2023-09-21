@@ -45,5 +45,5 @@
         name: httpd
         state: restarted
       when: 
-        - nsible_distribution == "CentOS" 
+        - ansible_distribution == "CentOS" 
         - ansible_distribution == "Ubuntu"
