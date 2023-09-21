@@ -1,4 +1,4 @@
----
+i---
 - name: Install and Configure Apache
   hosts: all
   remote_user: ec2-user
@@ -9,17 +9,17 @@
 
     - name: Install Apache
       package:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
         state: present
 
     - name: Start Apache
       ansible.builtin.service:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
         state: started
 
     - name: Ensure Apache service is enabled and running
       systemd:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
         enabled: yes
         state: started
 
@@ -30,6 +30,7 @@
 
     - name: Restart Apache
       ansible.builtin.service:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'apache2' }}"
+        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
         state: restarted
+
 
