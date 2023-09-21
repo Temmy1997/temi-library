@@ -1,35 +1,79 @@
 ---
-- name: Install and Configure Apache
+- name: Install Apache on Amazon Linux
   hosts: all
   remote_user: ec2-user
   become: yes
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-    - name: Install Apache
-      package:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
+
+    - name: Install Apache on CentOS
+      yum:
+        name: httpd
         state: present
+      when: 
+        - ansible_facts['ansible_distribution'] == "CentOS"
 
-    - name: Start Apache
+    - name: Install Apache on Ubuntu
+      package:
+        name: apache2
+        state: present
+      when:
+        - ansible_facts['ansible_distribution'] == "Ubuntu"
+
+    - name: Start Apache on CentOS
       ansible.builtin.service:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
+        name: httpd
         state: started
+      when:
+        - ansible_facts['ansible_distribution'] == "CentOS"
 
-    - name: Ensure Apache service is enabled and running
+    - name: Start Apache on Ubuntu
+      ansible.builtin.service:
+        name: apache2
+        state: started
+      when: 
+        - ansible_facts['ansible_distribution'] == "Ubuntu"
+
+    - name: Ensure Apache service is enabled and running on CentOS
       systemd:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
+        name: httpd
         enabled: yes
         state: started
+      when: 
+        - ansible_facts['ansible_distribution'] == "CentOS"
 
-    - name: Copy website files
+    - name: Ensure Apache service is enabled and running on Ubuntu 
+      systemd:
+        name: apache2
+        enabled: yes
+        state: started
+      when: 
+        - ansible_facts['ansible_distribution'] == "Ubuntu"
+
+    - name: Copy website files on CentOS
       copy:
         src: index.html
-        dest: "/var/www/html/index.html"
+        dest: /var/www/html/index.html
+      when: ansible_facts['ansible_distribution'] == 'CentOS'
 
-    - name: Restart Apache
+    - name: Copy website files on Ubuntu
+      copy:
+        src: index.html
+        dest: /var/www/html/index.html
+      when: ansible_facts['ansible_distribution'] == 'Ubuntu'
+
+    - name: Restart Apache on CentOS 
       ansible.builtin.service:
-        name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
+        name: httpd
         state: restarted
+      when: 
+        - ansible_facts['ansible_distribution'] == "CentOS"
 
+    - name: Restart Apache on Ubuntu 
+      ansible.builtin.service:
+        name: apache2
+        state: restarted
+      when: 
+        - ansible_facts['ansible_distribution'] == "Ubuntu"
 
