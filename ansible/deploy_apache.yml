@@ -1,4 +1,4 @@
-i---
+---
 - name: Install and Configure Apache
   hosts: all
   remote_user: ec2-user
@@ -6,7 +6,6 @@ i---
   vars:
     ansible_python_interpreter: /usr/bin/python3
   tasks:
-
     - name: Install Apache
       package:
         name: "{{ 'httpd' if ansible_distribution == 'CentOS' else 'Ubuntu' }}"
