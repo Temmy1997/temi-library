@@ -4,3 +4,5 @@ regions:
 filters:
   tag:Name:
   - 'new-automation2'
+  - 'Ubuntu-instance'
+
