@@ -48,7 +48,7 @@
         name: apache2
         enabled: yes
         state: started
-      when: when: ansible_distribution == "Ubuntu"
+      when: ansible_distribution == "Ubuntu"
       become_user: ubuntu
     
     - name: Copy website files
