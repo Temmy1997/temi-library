@@ -3,6 +3,12 @@
 A docker container image is a light weight stand alone executable package of software that includes everything it needs to run an application
 
 VM - OS - CONTAINERS - APPLICATIOM
+## BENEFITS OF DOCKER
+1. Isolation of application servers from the undelying host. 
+2. Optimizing $ minimization of pysical servers 
+3. Applications can be package and shipped 
+4. Makes it easy to deploy application
+
 
 ## Process to create a docker container
 
@@ -38,8 +44,10 @@ docker --version
 3. STEP 3: start DOCKER
 sudo systemctl start docker
 
-4. Step 4: Add ec2-user to docker group
+4. Step 4: Add user to docker group
 sudo usermod -a -G docker ec2-user
+
+If there is no docker group then create one 
 
 NOTE: After running this command, you may need to log out and log back in for the group membership changes to take effect.
 
@@ -56,12 +64,14 @@ NOTE: A place where we keep docker images is called registry(E.G Dockerhub, Gitl
 
 ## Important Docker Command 
 * docker build = Used to build an image from a docker file. 
+   -t: This option specifies the name and optionally a tag to be applied to the Docker image
 * Docker pull = Used to pull docker images
 * docker image = List docker images 
 * docker run = Run a docker image 
 * docker  ps = Show running containers  
 * docker inspect "container name" = To show info about a container 
 * docker rm = Remove docker container 
+* docker rmi -f :  remove docker images 
 * 
 
 
@@ -138,6 +148,8 @@ ANSWER
    COMMAND:
    docker exec -it web-container bash
 
+   
+
 ## Assignment 2
 Dockerize a smple ythin website
 
@@ -171,3 +183,6 @@ CMD ["app.py"]
 5. Run the Docker container using the following command:
    docker run -d -p 5000:5000 --name python-web my-flask-app
    CMD => Default command that is executed when you start a container
+
+
+

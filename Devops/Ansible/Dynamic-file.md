@@ -10,6 +10,9 @@
 1. Install Python
    sudo yum install python3 -y
 2. Create a python3 virtual environment
+python3 -m venv myenv
+source myenv/bin/activate
+deactivate (Deactiviate the env) 
 3. Install the boto3 library.
 
 * Ansible uses the boot core to make API calls to AWS to retrieve ec2 instance details.
@@ -17,7 +20,6 @@
   pip3 install boto3
 
 4. Innnstall aws cli on server 
-]
 
 5. Create an inventory directory under /opt and cd into the directory.
    sudo mkdir -p /opt/ansible/inventory
@@ -155,3 +157,7 @@ REFRENCE
 
 Create Role 
 ansible-galaxy role init create-ec2-instance
+
+
+  become: yes - MEANS TO RUN USER AS ROOT 
+  

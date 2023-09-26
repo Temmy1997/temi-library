@@ -15,3 +15,13 @@ Make sure that python3, pip2, boto3, and botocore is installed
 5. When you are finished working in the virtual environment, you can deactivate it by running the following command:
 
    {deactivate}
+python3 -m venv jenkins_env
+source jenkins_env/bin/activate
+pip3 install boto3 
+pip3 install botocore
+ansible-playbook -i ansible/aws_ec2.yml ansible/deploy_apache.yml
+
+ -u ec2-user
+
+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
+ 

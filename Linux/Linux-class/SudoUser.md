@@ -62,7 +62,7 @@ sudo visudo (Run this command)
 
 ## Step 2:
 
-Add this line -- Temi ALL=(ALL) NOPASSWD: ALL  (USER)
+Add this line -- temi ALL=(ALL) NOPASSWD: ALL  (USER)
                  %sys ALL=(ALL) NOPASSWD: ALL  (Group)
 
 https://www.tecmint.com/run-sudo-command-without-password-linux/

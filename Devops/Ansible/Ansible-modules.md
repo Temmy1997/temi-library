@@ -1,18 +1,44 @@
 # ANSIBLE MODULES 
-## System modules 
-## Command modules: 
+
+1. System modules 
+
+2. Command modules: 
 * Execute a command on a remote node 
-## Script modeule:
+
+3. Script modeule:
 * Use to copy script on a remote server 
-## Service modules:
+
+4. Service modules:
 * used to manage services 
-## Line in file module
+
+5. Line in file module
 * Used to search for a line and replace it or add it if it does not exit 
 * 
-## File modules 
-## Database Modules 
-## Cloud modules
-## Windows modules 
+
+6. File modules 
+
+7. Database Modules 
+
+8.  Cloud modules
+
+9. Windows modules 
+
+10. Ansible Template Modules 
+* Use to create files by dynamically redering the content of the files from a template files.
+* It used to generate files, scripts or rother text-based files.
+
+## Here's how the template module works:
+a. Create a Jinja2 template file that includes variables for values you want to customize in your configuration files.
+b. In the Ansible playbook, use the template module to render the template file, providing values for the placeholders via Ansible variables.
+
+The template module processes the template, replaces the placeholders with the provided values, and deploys the resulting configuration file to the remote server.
+
+## EXAMPLES 
+
+
+
+
+
 
 # ANSIBLE VARIBALES 
 vars:
